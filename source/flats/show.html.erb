@@ -1,0 +1,160 @@
+<!-- source/flats/show.html.erb -->
+
+<!-- Read from data.flats with owner's name as key -->
+<% flat = data.flats[owner] %>
+
+
+
+<div class="banner-small" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path flat.picture %>');"></div>
+
+
+
+<div class="header-flat-details">
+  <div class="container">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <div class="row">
+        <div class="col-xs-6">
+          <div class="profile">
+            <div class="profile_picture text-center">
+              <%= image_tag flat.owner_picture, class: "img-circle" %>
+              <p><%= flat.owner_name %></p>
+            </div>
+            <div class="profile_summary">
+              <h4><%= flat.summary %></h4>
+              <p><%= flat.city %></p>
+              <% if flat.stars == 5 %>
+                <i class="fa fa-star", style="color: #ffb400"></i>
+                <i class="fa fa-star", style="color: #ffb400"></i>
+                <i class="fa fa-star", style="color: #ffb400"></i>
+                <i class="fa fa-star", style="color: #ffb400"></i>
+                <i class="fa fa-star", style="color: #ffb400"></i>
+              <% elsif flat.stars == 4 %>
+                <i class="fa fa-star", style="color: #ffb400"></i>
+                <i class="fa fa-star", style="color: #ffb400"></i>
+                <i class="fa fa-star", style="color: #ffb400"></i>
+                <i class="fa fa-star", style="color: #ffb400"></i>
+                <i class="fa fa-star"></i>
+              <% elsif flat.stars == 3 %>
+                <i class="fa fa-star", style="color: #ffb400"></i>
+                <i class="fa fa-star", style="color: #ffb400"></i>
+                <i class="fa fa-star", style="color: #ffb400"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+              <% elsif flat.stars == 2 %>
+                <i class="fa fa-star", style="color: #ffb400"></i>
+                <i class="fa fa-star", style="color: #ffb400"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+              <% elsif flat.stars == 1 %>
+                <i class="fa fa-star", style="color: #ffb400"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+              <% elsif flat.stars == 0 %>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+              <% end %>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-5 col-xs-offset-1">
+          <div class="flat-infos">
+          <h4>Book this flat</h4>
+            <form>
+              <!--div class="form-inline"-->
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-xs-6"><input type="checkin" class="form-control" id="checkin" placeholder="checkin"></div>
+                    <div class="col-xs-6"><input type="checkout" class="form-control" id="checkout" placeholder="checkout"></div>
+                  </div>
+                </div>
+              <!--/div-->
+              <div class="form-group">
+                <select class="form-control">
+                  <option value="1">1 guest</option>
+                  <option value="2">2 guests</option>
+                  <option value="3">3 guests</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-danger btn-block">Book it</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="wrapper-gray">
+  <div class="container">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <div class="row">
+        <h4>About this flat</h4>
+        <p>This one bedroom studio lodges 2 people (there's 1 double bed) it is located in the city center, in a calm traditional residential area near city´s main Avenue - 3 minutes walk from Sacré Coeur.</p>
+      </div>
+
+      <hr>
+
+      <div class="row">
+        <div class="the-space">
+          <div class="col-xs-12 col-sm-2"><span>The Space</span></div>
+          <div class="col-xs-12 col-sm-4">
+            <ul>
+              <li><span>Accomodates: <strong><%= flat.accomodates %></strong></span></li>
+              <li><span>Bathrooms: <strong><%= flat.bathrooms %></strong></span></li>
+              <li><span>Bed type: <strong><%= flat.bedtype %></strong></span></li>
+              <li><span>Bedrooms: <strong><%= flat.bedrooms %></strong></span></li>
+            </ul>
+          </div>
+          <div class="col-xs-12 col-sm-4">
+            <ul>
+              <li><span>Beds: <strong><%= flat.beds %></strong></span></li>
+              <li><span>Property type: <strong><%= flat.property_type %></strong></span></li>
+              <li><span>Room type: <strong><%= flat.room_type %></strong></span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="row">
+        <div class="amenities">
+          <div class="col-xs-12 col-sm-2"><span>Amenities</span></div>
+          <div class="col-xs-12 col-sm-4">
+            <ul>
+              <%if flat.kitchen == true %>
+                <li><strong><i class="fa fa-cutlery"></i><span>Kitchen</span></strong></li>
+              <% end %>
+              <%if flat.wifi == true %>
+                <li><strong><i class="fa fa-wifi"></i><span>Wifi</span></strong></li>
+              <% end %>
+            </ul>
+          </div>
+          <div class="col-xs-12 col-sm-4">
+            <ul>
+              <%if flat.kitchen == true %>
+                <li><strong><i class="fa fa-television"></i><span>TV</span></strong></li>
+              <% end %>
+              <%if flat.drink == true %>
+                <li><strong><i class="fa fa-glass"></i><span>Welcome drink</span></strong></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

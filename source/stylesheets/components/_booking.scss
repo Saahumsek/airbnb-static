@@ -1,0 +1,26 @@
+.profile {
+  display: flex;
+  align-items: center;
+  padding: 20px 0px;
+}
+
+.profile_summary {
+  padding-left: 10px;
+}
+
+.fa-star {
+  font-size: 20px;
+}
+
+.flat-infos {
+  background-color: #F4F4F4;
+  padding: 15px;
+
+  h4 {
+    margin-top: -5px;
+  }
+}
+
+.header-flat-details {
+  padding: 20px 0px;
+}
